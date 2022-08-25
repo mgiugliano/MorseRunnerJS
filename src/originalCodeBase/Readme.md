@@ -17,14 +17,17 @@ installing GNU Global as well as Python's Pygment library.
 
 Within bash, two environmental variables were set:
 
+```
 export GTAGSCONF=/usr/local/etc/gtags.conf
 export GTAGSLABEL=pygments
-
+```
 
 The following commands (perhaps the first two are redundant) were launched from bash, while in the same folder:
-	- find . -name '*.pas' > pippo_list
-	- gtags -vf pippo_list
-	- gtags -vf
+```
+find . -name '*.pas' > pippo_list
+gtags -vf pippo_list
+gtags -vf
+```
 
 These generated the (binary) files GRTAGS, GPATH, GTAGS.
 

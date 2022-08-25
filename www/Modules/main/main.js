@@ -13,6 +13,7 @@ noise.fadeIn = 0.1;
 noise.fadeOut = 0;
 noise.tau = 0.001;
 
+function play() {
 // Noise.play(noise);
 // Noise.stop(noise);
 
@@ -23,11 +24,7 @@ Stations.push(CreateStation());
 PlayActivity();
 sleep(2000);
 
-PlayActivity();
-sleep(2000);
-
-PlayActivity();
-sleep(2000);
-
 console.log("Ok!");
 console.log(Stations);
+
+}

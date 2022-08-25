@@ -1,0 +1,3 @@
+# Docs, notes, and brainstorming
+
+Work in progress...

@@ -22,7 +22,7 @@ Stations.push(CreateStation());
 // Stations.push(CreateStation());
 
 PlayActivity();
-sleep(2000);
+//sleep(2000);
 
 console.log("Ok!");
 console.log(Stations);

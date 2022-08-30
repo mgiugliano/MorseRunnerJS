@@ -5,50 +5,101 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MorseRunnerJS</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
+
+
 <body>
-    <h1>Work in progress: playground</h1>
+    <main>
+        <h1>Work in progress: playground</h1>
 
-    <script src="Libs/noise.js"></script>
-    <script src="Libs/jscwlib.js"></script>
-    <script src="Modules/main/helper.js"></script>
-    <script src="Modules/main/main.js"></script>
+        <script defer src="Libs/noise.js"></script>
+        <script defer src="Libs/jscwlib.js"></script>
+        <script defer src="Modules/main/helper.js"></script>
+        <script defer src="Modules/main/main.js"></script>
+
+        <div class="row">
+            <div class="column" style="background-color:#aaa;">
+
+                <textarea name="logTextArea" rows="16" cols="50" readonly spellcheck="false" wrap="off">
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                    00:00:30 JA1APK 599 001 599 001 JA1&#10;
+                </textarea>
+
+                <br><br><br><br>
+
+                <fieldset>
+                    <label for="hisCall">Call</label> <input type="text" id="hisCall" value="">
+                    <label for="hisRST">RST </label> <input type="text" id="hisRST" value="">
+                    <label for="hisNr">Nr. </label> <input type="text" id="hisNr" value="">
+                    <br><br><br>
+                    <button onclick="CQ();">F1 CQ</button>
+                    <button onclick="Nr();">F2 #</button>
+                    <button onclick="TU();">F3 TU</button>
+                    <button onclick="MY();">F4 my</button><br>
+                    <button onclick="HIS();">F5 his</button>
+                    <button onclick="B4();">F6 B4</button>
+                    <button onclick="QSTN();">F7 ?</button>
+                    <button onclick="AGN();">F8 AGN</button>
+                </fieldset>
+
+            </div>
+
+            <div class="column" style="background-color:#bbb;">
+                <fieldset>
+                    <legend>Station</legend>
+
+                    <label for="CALL">Call </label> <input type="text" id="CALL" value="IV3CWA"><br>
+                    <label for="WPM"> Speed (WPM) </label> <input type="number" id="WPM" value="30"><br>
+                    <label for="PITCH"> Pitch(Hz) </label> <input type="text" id="PITCH" value="600"><br>
+                    <label for="BANDW">RX Bandwidth (Hz) </label> <input type="text" id="BANDW" value="500"><br>
+                    <br>
+                    <input type="checkbox" id="QSK" checked>
+                    <label for="QSK">QSK</label><br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Band conditions</legend>
+                    <input type="checkbox" id="QRN" checked>
+                    <label for="QRN">QRN</label><br>
+                    <input type="checkbox" id="QRM">
+                    <label for="QRM">QRM</label><br>
+                    <input type="checkbox" id="QSB">
+                    <label for="QSB">QSB</label><br>
+                    <input type="checkbox" id="FLUTTER">
+                    <label for="FLUTTER">Flutter</label>
+                    <input type="checkbox" id="LID">
+                    <label for="LID">LID's</label>
+                    <br>
+                    <label for="ACTIVITY"> Activity </label> <input type="number" id="ACTIVITY" value="1"><br>
+                </fieldset>
+
+                <hr>
+                <fieldset>
+                    <button onclick="play2();">Play2()</button>
+                    <button onlick="PlayActivity();">PlayActivity()</button>
+
+                    <label for="timer">for </label> <input type="text" id="timer" value="5"> minutes<br>
+                </fieldset>
+
+                <br>
+                <label for="runningTimer">Running Timer (min):</label><br>
+                <progress id="runningTimer" max="100" value="70"><label for="runningTimer">5 min</label></progress>
+
+                <br><br><br><br>
 
 
-    <h1>Station</h1>
-    <label for="CALL">Call </label> <input type="text" id="CALL" value="IV3CWA"><br>
-    <label for="WPM"> Speed (WPM) </label> <input type="number" id="WPM" value="30"><br>
-    <label for="PITCH"> Pitch(Hz) </label> <input type="text" id="PITCH" value="600"><br>
-    <label for="BANDW">RX Bandwidth (Hz) </label> <input type="text" id="BANDW" value="500"><br>
-    <br>
-    <input type="checkbox" id="QSK" checked>
-    <label for="QSK">QSK</label><br>
-
-    <br><br><br><br>
-
-
-    <h1>Band conditions</h1>
-    <input type="checkbox" id="QRN" checked>
-    <label for="QRN">QRN</label><br>
-    <input type="checkbox" id="QRM">
-    <label for="QRM">QRM</label><br>
-    <input type="checkbox" id="QSB">
-    <label for="QSB">QSB</label><br>
-    <input type="checkbox" id="FLUTTER">
-    <label for="FLUTTER">Flutter</label><br>
-    <input type="checkbox" id="LID">
-    <label for="LID">LID's</label><br>
-    <br>
-    <label for="ACTIVITY"> Activity </label> <input type="number" id="ACTIVITY" value="1"><br>
-
-    <br><br><br><br>
-
-
-    <button onclick="play2();">Play2()</button>
-    <button onlick="PlayActivity();">PlayActivity()</button>
-
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

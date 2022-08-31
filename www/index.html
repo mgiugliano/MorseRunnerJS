@@ -16,8 +16,9 @@
     <main>
         <h1>Work in progress: playground</h1>
 
-        <script defer src="Libs/noise.js"></script>
+        <!-- <script defer src="Libs/noise.js"></script> -->
         <script defer src="Libs/jscwlib.js"></script>
+        <script defer src="Modules/realisticRFnoise/noise.js"></script>
         <script defer src="Modules/main/helper.js"></script>
         <script defer src="Modules/main/main.js"></script>
 
@@ -86,6 +87,11 @@
                 <fieldset>
                     <button onclick="play2();">Play2()</button>
                     <button onlick="PlayActivity();">PlayActivity()</button>
+
+                    <button onclick="Noise.play(noise);">Start Noise</button>
+                    <button onclick="Noise.stop(noise);">STOP Noise</button>
+
+
 
                     <label for="timer">for </label> <input type="text" id="timer" value="5"> minutes<br>
                 </fieldset>

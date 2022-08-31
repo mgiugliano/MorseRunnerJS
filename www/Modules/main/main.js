@@ -13,6 +13,23 @@ noise.fadeIn = 0.1;
 noise.fadeOut = 0;
 noise.tau = 0.001;
 
+document.getElementById("BANDW").addEventListener("keyup", 
+function(event) {
+    if (event.keyCode === 13) {
+        UpdateNoise();
+    }
+})
+
+
+function UpdateNoise() {
+    MyBandwidth = document.getElementById("BANDW").value;
+    noise.tau = 1. / parseFloat(MyBandwidth);
+    Noise.stop(noise);
+    Noise.play(noise);
+}
+
+
+
 function play() {
 // Noise.play(noise);
 // Noise.stop(noise);

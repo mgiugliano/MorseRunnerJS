@@ -18,7 +18,6 @@ var supportsES6 = function() {
 }();
 
 
-
 var Noise = (function () {
 
   "use strict";
@@ -27,7 +26,6 @@ var Noise = (function () {
   // Create an instance of Audio Context (Web Sound)
   const audioContext = new(window.AudioContext || window.webkitAudioContext);
   
-
 
 
   // Modified from https://noisehack.com/generate-noise-web-audio-api/

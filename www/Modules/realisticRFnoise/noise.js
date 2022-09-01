@@ -1,13 +1,18 @@
-// Based on Web Audio API - https://webaudio.github.io/web-audio-api/
-// https://codepen.io/2kool2/pen/xrLeMq/left/
+//
+// Background "noise" generator
+//
 
-// Note: In the Web Audio API, samples are floating-point numbers in the range [-1.0, 1.0].↩
+// Based on Web Audio API - https://webaudio.github.io/web-audio-api/
+// almost verbatim taken from https://codepen.io/2kool2/pen/xrLeMq/left/
+
+// Note: In the Web Audio API, samples are floating-point numbers in [-1.0, 1.0]
 
 // Sampling rate is 48 kHz (by default)
 
+
+var supportsES6 = function() {
 // Check if the browser supports ECMAScript 6 (ES6) 
 // From https://gist.github.com/bendc/d7f3dbc83d0f65ca0433caf90378cd95
-var supportsES6 = function() {
   try {
     new Function("(a = 0) => a");
     return true;
@@ -28,26 +33,25 @@ var Noise = (function () {
   
 
 
-  // Modified from https://noisehack.com/generate-noise-web-audio-api/
   function createColoredNoise(track) {
+  // Generate a realisation of a colored noise (i.e. Ornstein-Uhlenbeck process)
+  // Modified from https://noisehack.com/generate-noise-web-audio-api/
 
+    // audioContext.sampleRate is 48'000 Hz (i.e. samples/s) by default
+    // bufferSize, below, is thus defined to be 2 second long.
     const bufferSize = 2 * audioContext.sampleRate;
     const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
     const output = noiseBuffer.getChannelData(0);
 
-    // audioContext.sampleRate is 48'000 Hz (i.e. samples/s) by default
-    // bufferSize is thus 2 second long.
-
     const dt = 1 / audioContext.sampleRate;     // Sampling interval [s]
-    const A = (1 - dt / track.tau);
-    const B = 50 * Math.sqrt((2 * dt) / track.tau);
+    const A = (1 - dt / track.tau);             // Constant to save operations
+    const B = Math.sqrt((2 * dt) / track.tau) / track.tau; // Constant to save op
 
     output[0] = 0.;     // Initial condition for the "state" variable  
 
     for (let i = 1; i < bufferSize; i++) {
       output[i] = A * output[i - 1] + B * RndNormal();
     }
-    
     track.audioSource.buffer = noiseBuffer;
   } // end createColoredNoise()
 

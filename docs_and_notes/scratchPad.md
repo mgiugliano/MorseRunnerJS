@@ -41,3 +41,39 @@ bandwidth.
 
 - Main.dfm  (GUI definition)
 - Main.pas
+
+
+## Generating the noise (our way)
+
+
+Note: the code above solves numerically (by the Euler forward method) a
+(stochastic) differential equation that acts as a low-pass filter:
+
+dx/dt = -x/tau + u        x(t) is the output, u(t) is (white noise) input
+
+Let's apply the Euler's formula, approximating derivatives with differences
+x(k+1) - x(k) / Dt = -x(k)/tau + u(k)
+x(k+1) = (1 - Dt/tau) * x(k) + Dt*u(k)
+
+In the actual equation, the "Dt*u(k)" is written in a different way,
+this is because strictly speaking a white noise cannot be samples and
+some "careful massaging" of the probability theoretical properties is
+needed to make the continuous time stochastic o.d.e. equivalent to the
+discrete time stochastic iterative algebraic equation.
+
+Note that in the Fourier domain, the filter equation becomes
+
+X(w) jw = -X(w)/tau + U, then  X(w) (jw + 1/tau) = U 
+
+This can be further rewritten as:
+
+X(w) = tau / (jw tau + 1)  U
+
+The magnitude of the transfer function is: tau * 1/sqrt(w^2 tau^2 + 1)
+Therefore, changing tau does indeed change the cut-off frequency but also the
+DC gain. To remedy this, one can modify the original equation as
+
+dx/dt = -x/tau + u/tau    
+
+But I am not sure this is the problem. Reducing the bandwidth, changes the total
+power of the signal.

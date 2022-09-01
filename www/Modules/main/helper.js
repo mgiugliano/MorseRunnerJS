@@ -48,9 +48,7 @@ function PlayActivity() {
   return agents;
 }
 
-function PickCall() {
-  return calls[Math.round(Math.random() * calls.length)];
-}
+
 
 function RndNormal() {
   // Normal pseudo-random number, by the Box-Muller transform,

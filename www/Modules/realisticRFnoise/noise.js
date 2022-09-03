@@ -113,14 +113,9 @@ function buildTrack(track) {
 
 
 }());
-//*/
 
 
 
-var noise = {
-  volume: 0.05, // 0 - 1
-  tau: 0.001,
-};
 
 
 // if (supportsES6) {

@@ -1,6 +1,9 @@
 # Notes and understanding
 
 
+## The new GUI
+
+
 ## Sound generation
 
 From inspecting Contest.pas and Main.pas, I think the original MorseRunner works

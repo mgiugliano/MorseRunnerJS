@@ -16,10 +16,10 @@
     <main>
         <h1>Work in progress: playground</h1>
 
-        <!-- <script defer src="Libs/noise.js"></script> -->
         <script defer src="Libs/jscwlib.js"></script>
         <script defer src="Modules/realisticRFnoise/noise.js"></script>
         <script defer src="Modules/generateCallSigns/callSignList.js"></script>
+        <script defer src="Modules/main/GUI.js"></script>
         <script defer src="Modules/main/helper.js"></script>
         <script defer src="Modules/main/main.js"></script>
 
@@ -39,10 +39,12 @@
                 <br><br><br><br>
 
                 <fieldset>
-                    <label for="hisCall">Call</label> <input type="text" id="hisCall" value="">
-                    <label for="hisRST">RST </label> <input type="text" id="hisRST" value="">
-                    <label for="hisNr">Nr. </label> <input type="text" id="hisNr" value="">
+                    <label for="theirCALL">Call</label> <input type="text" id="theirCALL" value="">
+                    <label for="theirRST">RST </label> <input type="text" id="theirRST" value="">
+                    <label for="theirNR">Nr. </label> <input type="text" id="theirNR" value="">
+
                     <br><br><br>
+
                     <button onclick="CQ();">F1 CQ</button>
                     <button onclick="Nr();">F2 #</button>
                     <button onclick="TU();">F3 TU</button>
@@ -51,6 +53,7 @@
                     <button onclick="B4();">F6 B4</button>
                     <button onclick="QSTN();">F7 ?</button>
                     <button onclick="AGN();">F8 AGN</button>
+
                 </fieldset>
 
             </div>
@@ -86,20 +89,18 @@
 
                 <hr>
                 <fieldset>
-                    <button onclick="play2();">Play2()</button>
-                    <button onlick="PlayActivity();">PlayActivity()</button>
+                    <!-- <button onclick="play2();">Play2()</button>
+                    <button onclick="PlayActivity();">PlayActivity()</button> -->
 
-                    <button onclick="Noise.play(noise);">Start Noise</button>
-                    <button onclick="Noise.stop(noise);">STOP Noise</button>
+                    <button onclick="START();">START</button>
+                    <label for="timer">for </label> <input type="text" id="TIMER" value="1"> minutes<br>
+                    <button onclick="STOP();">STOP</button>
 
-
-
-                    <label for="timer">for </label> <input type="text" id="timer" value="5"> minutes<br>
                 </fieldset>
 
                 <br>
-                <label for="runningTimer">Running Timer (min):</label><br>
-                <progress id="runningTimer" max="100" value="70"><label for="runningTimer">5 min</label></progress>
+                <label for="runningTimer">Running Timer</label><br>
+                <progress id="runningTimer" max="100" value="0"></progress>
 
                 <br><br><br><br>
 

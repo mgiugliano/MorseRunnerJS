@@ -9,7 +9,7 @@
 
 // Sampling rate is 48 kHz (by default)
 
-
+//------------------------------------------------------------------------------
 var supportsES6 = function() {
 // Check if the browser supports ECMAScript 6 (ES6) 
 // From https://gist.github.com/bendc/d7f3dbc83d0f65ca0433caf90378cd95
@@ -21,8 +21,10 @@ var supportsES6 = function() {
     return false;
   }
 }();
+//------------------------------------------------------------------------------
 
 
+//------------------------------------------------------------------------------
 var Noise = (function () {
 
   "use strict";
@@ -78,17 +80,11 @@ function buildTrack(track) {
 
 
   function setGain(track) {
-
     track.volume = (track.volume >= 0) ? track.volume : 0.5;
-    
     track.fadeIn = 0.5;
-    
     track.gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-
     track.gainNode.gain.linearRampToValueAtTime(track.volume / 4, audioContext.currentTime + track.fadeIn / 2);
-
     track.gainNode.gain.linearRampToValueAtTime(track.volume, audioContext.currentTime + track.fadeIn);
-
   }
 
 
@@ -113,6 +109,7 @@ function buildTrack(track) {
 
 
 }());
+//------------------------------------------------------------------------------
 
 
 

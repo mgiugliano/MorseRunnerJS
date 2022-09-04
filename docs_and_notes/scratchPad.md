@@ -3,6 +3,70 @@
 
 ## The new GUI
 
+The HTML GUI closely emulates the (logic of the) original one:
+
+1- (local) STATION parameters: Callsign, Speed, Pitch, Bandwidth, QSK
+2- Band CONDITIONS parameters: QRN, QRM, QSB, Flut, LID's - not yet implemented
+                               Activity - implemented
+3- Run controls:               START/STOP buttons and timer settings
+4- Log window (read-only):     not yet implemented
+5- Operator:                   input text fields for QSO and logging
+                               including buttons (CQ, AGN, NR, ETC.)
+
+
+## The core functions
+
+sendMSG()     -   handles all CW messages sent by the local station. It accepts
+                  two arguments: MSG (string) the content of the message and
+                  (optional) a callback function to launch upon message conclusion.
+
+
+callsigns.js:       handles the random call signs generation
+    parseMASTERSCP()                reads all MASTER.SCP into an array
+    pickCall()                      returns a random call sign as a string
+    LevenshteinDistance(a, b)       if a==b, returns -999, otherwise it computes 
+                                    "dissimilarity" between strings as -..---.
+
+    ASCII2morse(inputStr)           converts a string into -.--...- w/o spaces
+
+
+gui.js:             handles the GUI update, events, interactions
+    document.onkeydown              call backs are defined, for keyboard presses
+    addEventListener                events (click/keyup) are defined for GUI elements
+    GUI_updated(event)              this launches readGUI() when RETURN is released
+    readGUI()                       reads all GUI params and stores them in global vars   
+    writeGUI()                      the opposite of readGUI(), for future cookie use
+    focus_CALL()                    makes the text field "CALL" in focus
+    clear_CALL()                    clears the content of the text field "CALL"
+    clear_fields()                      clears "CALL", "RST", and "Nr" fiels
+
+qso.jl:             handles actual interactions between remote & local stations
+
+
+
+createStation()     returns a struct with a single random station
+playActivity()      plays all messages responding to the CQ
+respondCall()       launches when the user presses RETURN and the theirCALL field is not empty
+                    the user has in other words committed to respond to one of the callers
+concludeQSO()
+
+
+Calling CQ  ---------> triggers station(s) to appear and respond
+Sending a callsign --> triggers the closest/exact station to come back (checkUserResponse)
+                       it comes back with RST (QSO() function) or "DE callsign" (DE())
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Sound generation
 

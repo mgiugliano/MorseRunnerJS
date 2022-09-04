@@ -6,10 +6,6 @@
 // from https://www.supercheckpartial.com/MASTER.SCP ~400 KB
 //
 
-
-var CALLSIGNS;    // Global variable: an array of strings, each containing a call sign
-
-
 function parseMASTERSCP() {
   // This is the callback function, called by get_MASTERSCP() upon "load"
   let content = this.responseText;
@@ -30,7 +26,7 @@ function getMASTERSCP() {
     xmlhttp.addEventListener("load", parseMASTERSCP);  // callback function
 
     // The file to download is hard-coded below.
-    xmlhttp.open("GET", "Modules/generateCallSigns/MASTER.SCP", true);
+    xmlhttp.open("GET", "Libs/MASTER.SCP", true);
     xmlhttp.send();
 } // end getMASTERSCP()
 
@@ -47,39 +43,43 @@ function LevenshteinDistance(a, b) {
 // change one string into the other. Here we use it to compare similarities of
 // actual and "copied" call signs (expressed as strings made of dit and dahs). 
 
-            a = ASCII2morse(a); // ASCII is converted into "." and "-"
-            b = ASCII2morse(b); // ASCII is converted into "." and "-"
+    if (a.toLowerCase() == b.toLowerCase()) { // if callsigns are identical
+      return -999;    
+    }                                   // this is intended as the perfect match
 
-            if(a.length == 0) return b.length; // if a is empty.. d = length of b
-            if(b.length == 0) return a.length; // if b is empty.. viceversa
+      a = ASCII2morse(a); // ASCII is converted into "." and "-"
+      b = ASCII2morse(b); // ASCII is converted into "." and "-"
 
-            var matrix = [];
+      if(a.length == 0) return b.length; // if a is empty.. d = length of b
+      if(b.length == 0) return a.length; // if b is empty.. viceversa
 
-            // increment along the first column of each row
-            var i;
-            for(i = 0; i <= b.length; i++){
-                matrix[i] = [i];
-            }
+      var matrix = [];
 
-            // increment each column in the first row
-            var j;
-            for(j = 0; j <= a.length; j++){
-                matrix[0][j] = j;
-            }
+      // increment along the first column of each row
+      var i;
+      for(i = 0; i <= b.length; i++){
+          matrix[i] = [i];
+      }
 
-            // Fill in the rest of the matrix
-            for(i = 1; i <= b.length; i++){
-                for(j = 1; j <= a.length; j++){
-                if(b.charAt(i-1) == a.charAt(j-1)){
-                    matrix[i][j] = matrix[i-1][j-1];
-                } else {
-                    matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // substitution
-                                            Math.min(matrix[i][j-1] + 1, // insertion
-                                                    matrix[i-1][j] + 1)); // deletion
-                }
-                }
-            }
-        return matrix[b.length][a.length];
+      // increment each column in the first row
+      var j;
+      for(j = 0; j <= a.length; j++){
+          matrix[0][j] = j;
+      }
+
+      // Fill in the rest of the matrix
+      for(i = 1; i <= b.length; i++){
+          for(j = 1; j <= a.length; j++){
+          if(b.charAt(i-1) == a.charAt(j-1)){
+              matrix[i][j] = matrix[i-1][j-1];
+          } else {
+              matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // substitution
+                                      Math.min(matrix[i][j-1] + 1, // insertion
+                                              matrix[i-1][j] + 1)); // deletion
+          }
+          }
+      }
+  return matrix[b.length][a.length];
         
 } // end LevenshteinDistance()
 
@@ -103,7 +103,7 @@ function ASCII2morse(inputStr) {
             "0": "-----", "/": "-..-.", " ": ""};
             // Note: the blank/space character is to be replaced with ""
 
-	for(var i = 0; i < inputStr.length; i++) {  // For each element of the input 
+	for(let i = 0; i < inputStr.length; i++) {  // For each element of the input 
 		outputStr += values[inputStr[i]] + "";    // the corresponding Morse code
 	}                                           // is appended to the output...
                                               // (without any space)

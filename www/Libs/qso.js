@@ -46,7 +46,7 @@ function respondCall() {
 
     if ((RUN == true) && (event.keyCode === 13) && (tmp.length>0)) {
         theirCALL = tmp;
-        theirNr  = NR.string;
+        //WRONG - theirNr  = NR.string;
         document.getElementById("RST").value = "5NN";
         sendMSG(theirCALL + "|S150 5NN |S150 " + cut_numbers(NR), checkUserResponse);
 
@@ -66,4 +66,27 @@ function concludeQSO() {
         focus_CALL();
     }
 } // end concludeQSO()
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+function logQSO() {
+  let tmp = document.getElementById("logTextArea").value;
+
+  const date = new Date();
+  const loggeddate = date.toLocaleTimeString('en-GB'); // 24h
+
+  let copiedCallSign = document.getElementById("theirCALL").value.toUpperCase();
+  let copiedNr       = document.getElementById("theirNr").value.toUpperCase();
+
+  let entry = loggeddate + "  " + copiedCallSign + "\t\t" + "599 " + NR + "\t599 " + copiedNr;
+
+  if ((copiedCallSign == Stations[IDX].HisCall) && (copiedNr == Stations[IDX].HisNr)) {
+     tmp = tmp + "\n" + entry + " ✓"
+  }
+  else {
+    tmp = tmp + "\n" + entry + " ✗"
+  }
+  document.getElementById("logTextArea").value = tmp;
+} // end logQSO()
 //------------------------------------------------------------------------------

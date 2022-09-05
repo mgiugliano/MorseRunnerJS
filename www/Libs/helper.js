@@ -146,7 +146,8 @@ function START() {      // Callback starting the operation as "running"
 
       focus_CALL();       // The GUI input text field "hisCALL" becomes in focus
       clear_fields();     // The GUI input text fields are cleared
-
+      document.getElementById("logTextArea").value = "";
+      
       RUN = true;         // The state is changed into "running"
       IDX = -1;           // Current station in QSO initialised
       NR = 1;             // Initialized the progressive number for exchanges
@@ -268,6 +269,9 @@ function TU() {
     //MSG = "TU E E"; 
     MSG = "TU"; 
     sendMSG(MSG);
+
+    logQSO();
+
     if (IDX != -1) {
       agents.splice(IDX, 1);
       Stations.splice(IDX, 1);

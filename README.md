@@ -20,4 +20,26 @@ jscwlib should indeed make life extremely easy. See by yourself and appreciate F
 
 ## Testing (as GitHub pages)
 
-Point your browser to https://mgiugliano.github.io/MorseRunnerJS/www/ to play and test. 
+Point your browser to https://mgiugliano.github.io/MorseRunnerJS/www/ to play and test.
+
+## Install and deploy with Docker
+
+### Using docker compose
+You can deploy the image using a `docker-compose.yml` followed by `docker-compose up -d`:
+```yml
+version: "3.8"
+services:
+  morserunner:
+    container_name: morserunner
+    image: ghcr.io/f4iey/morserunnerjs:main
+    ports:
+        - "8080:80"
+    restart: unless-stopped
+```
+
+Or using `docker run`:
+```sh
+docker run -d --name morserunner -p 8080:80 --restart unless-stopped ghcr.io/f4iey/morserunnerjs:main
+```
+
+After deployment, you can look at the page on `http://localhost:8080`

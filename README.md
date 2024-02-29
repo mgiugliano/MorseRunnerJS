@@ -30,14 +30,14 @@ version: "3.8"
 services:
   morserunner:
     container_name: morserunner
-    image: ghcr.io/f4iey/morserunnerjs:main
+    image: ghcr.io/f4iey/morserunnerjs:master
     ports:
         - "8080:80"
     restart: unless-stopped
 ```
 ### Docker run
 ```sh
-docker run -d --name morserunner -p 8080:80 --restart unless-stopped ghcr.io/f4iey/morserunnerjs:main
+docker run -d --name morserunner -p 8080:80 --restart unless-stopped ghcr.io/f4iey/morserunnerjs:master
 ```
 
 You can check the page at [http://localhost:8080]

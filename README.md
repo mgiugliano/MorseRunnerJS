@@ -40,4 +40,4 @@ services:
 docker run -d --name morserunner -p 8080:80 --restart unless-stopped ghcr.io/f4iey/morserunnerjs:main
 ```
 
-You can check the page at http://localhost:8080
+You can check the page at [http://localhost:8080]

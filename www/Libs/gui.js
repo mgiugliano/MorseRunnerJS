@@ -25,7 +25,7 @@ document.onkeydown = function(evt) {
             CQ();
             break;
         case 113: //F2
-            NR();   // name of the function and NOT of the global variable!
+            Nr();   // name of the function and NOT of the global variable!
             break;
         case 114: //F3
             TU();

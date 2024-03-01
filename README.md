@@ -18,7 +18,7 @@ jscwlib should indeed make life extremely easy. See by yourself and appreciate F
 
 
 
-## Testing (as GitHub pages)
+## Testing
 
 Point your browser to [rcw.f4iey.fr](https://rcw.f4iey.fr/) to play and test. 
 

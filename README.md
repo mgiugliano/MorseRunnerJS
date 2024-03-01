@@ -21,6 +21,7 @@ jscwlib should indeed make life extremely easy. See by yourself and appreciate F
 ## Testing
 
 Point your browser to [rcw.f4iey.fr](https://rcw.f4iey.fr/) to play and test. 
+(or [here](https://mgiugliano.github.io/MorseRunnerJS/www/), demonstrating basic deployment through GitHub pages)
 
 ## Deploy with Docker
 

@@ -6,14 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MorseRunnerJS</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap JS and Popper.js -->
+    <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 
 
-<body>
-    <main>
+<body class="bg-secondary text-white">
+    <main class="container-xl mt-4">
         <h1>Morse Runner JS</h1>
 
         <script defer src="Libs/jscwlib.js"></script>
@@ -26,55 +32,60 @@
 
         <div class="row">
             <!-- <div class="column" style="background-color:#aaa;"> -->
-            <div class="column">
+            <div class="col">
 
-                <textarea id="logTextArea" rows="16" cols="50" readonly spellcheck="false" wrap="off">
+                <textarea class="form-label bg-dark text-white" id="logTextArea" rows="16" cols="50" readonly spellcheck="false" wrap="off">
                 </textarea>
 
                 <br><br><br>
+                <div class="card bg-dark">
+                <fieldset class="card-body bg-dark">
+                    <legend class="card-title">Operator</legend>
 
-                <fieldset>
-                    <legend>Operator</legend>
-
-                    <label for="theirCALL">Call</label> <input type="text" id="theirCALL" value="" maxlength="14"
+                    <label for="theirCALL" class="form-label">Call</label> <input type="text" class="bg-dark text-white form-control" id="theirCALL" value="" maxlength="14"
                         size="14">
-                    <label for="RST">RST </label> <input type="text" id="RST" value="" maxlength="3" size="3">
-                    <label for="theirNr">Nr. </label> <input type="text" id="theirNr" value="" maxlength="3" size="3">
+                    <label for="RST" class="form-label">RST </label> <input type="text" class="bg-dark text-white form-control" id="RST" value="" maxlength="3" size="3">
+                    <label for="theirNr" class="form-label">Nr. </label> <input type="text" class="bg-dark text-white form-control" id="theirNr" value="" maxlength="3" size="3">
 
                     <br><br>
 
-                    <button onclick="CQ();">F1 CQ</button>
-                    <button onclick="Nr();">F2 #</button>
-                    <button onclick="TU();">F3 TU</button>
-                    <button onclick="MY();">F4 my</button><br>
-                    <button onclick="HIS();">F5 his</button>
-                    <button onclick="B4();">F6 B4</button>
-                    <button onclick="QSTN();">F7 ?</button>
-                    <button onclick="AGN();">F8 AGN</button><br>
-                    <button onclick="ESC();">ESC BREAK</button>
-
+                    <div class="d-grid d-md-block">
+                    <button class="btn-sm btn-success" onclick="CQ();">F1 CQ</button>
+                    <button class="btn-sm btn-primary" onclick="Nr();">F2 #</button>
+                    <button class="btn-sm btn-primary" onclick="TU();">F3 TU</button>
+                    <button class="btn-sm btn-primary" onclick="MY();">F4 my</button>
+                    <button class="btn-sm btn-primary" onclick="HIS();">F5 his</button>
+                    <button class="btn-sm btn-warning" onclick="B4();">F6 B4</button>
+                    <button class="btn-sm btn-warning" onclick="QSTN();">F7 ?</button>
+                    <button class="btn-sm btn-warning" onclick="AGN();">F8 AGN</button><br><br>
+                    <button class="btn-sm btn-danger" onclick="ESC();">ESC BREAK</button>
+                    </div>
                 </fieldset>
+                </div>
 
             </div>
 
             <!-- <div class="column" style="background-color:#bbb;"> -->
-            <div class="column">
-                <fieldset>
-                    <legend>Station</legend>
+            <div class="col">
+                <div class="card bg-dark">
+                <fieldset class="card-body bg-dark">
+                    <legend class="card-title">Station</legend>
 
-                    <label for="CALL">Call </label> <input type="text" id="CALL" value="IV3IFZ" maxlength="10"><br>
-                    <label for="WPM"> Speed (WPM) </label> <input type="number" id="WPM" value="30" min="5"
+                    <label for="CALL">Call </label> <input type="text" class="bg-dark text-white form-control" id="CALL" value="IV3IFZ" maxlength="10"><br>
+                    <label for="WPM"> Speed (WPM) </label> <input type="number" class="form-control bg-dark text-white" id="WPM" value="30" min="5"
                         max="50"><br>
-                    <label for="PITCH"> Pitch(Hz) </label> <input type="number" id="PITCH" value="600" min="0"
+                    <label for="PITCH"> Pitch(Hz) </label> <input type="number" class="form-control bg-dark text-white" id="PITCH" value="600" min="0"
                         max="1000"><br>
-                    <label for="BANDW">RX Bandwidth (Hz) </label> <input type="number" id="BANDW" value="500" min="0"
+                    <label for="BANDW">RX Bandwidth (Hz) </label> <input type="number" class="form-control bg-dark text-white" id="BANDW" value="500" min="0"
                         max="500"><br>
                     <br>
                     <input type="checkbox" id="QSK" checked>
                     <label for="QSK">QSK</label><br>
                 </fieldset>
-
-                <fieldset>
+                </div>
+                <br>
+                <div class="card bg-dark">
+                <fieldset class="card-body">
                     <legend>Band conditions</legend>
                     <input type="checkbox" id="QRN" checked>
                     <label for="QRN">QRN</label><br>
@@ -87,24 +98,27 @@
                     <input type="checkbox" id="LID">
                     <label for="LID">LID's</label>
                     <br>
-                    <label for="ACTIVITY"> Activity </label> <input type="number" id="ACTIVITY" value="1" max="10"
+                    <label for="ACTIVITY"> Activity </label> <input type="number" class="form-control bg-dark text-white" id="ACTIVITY" value="1" max="10"
                         min="1"><br>
                 </fieldset>
+                </div>
 
                 <hr>
-                <fieldset>
+                <div class="card bg-dark">
+                <fieldset class="card-body">
                     <!-- <button onclick="play2();">Play2()</button>
                     <button onclick="PlayActivity();">PlayActivity()</button> -->
                     <legend>Run controls</legend>
-                    <button onclick="START();">START</button>
-                    <label for="timer">for </label> <input type="text" id="TIMER" value="1" maxlength="2" size="2">
+                    <button class="btn-sm btn-secondary" onclick="START();">START</button>
+                    <label for="timer">for </label> <input type="text" class="rounded bg-dark text-white" id="TIMER" value="1" maxlength="2" size="2">
                     minutes
-                    <button onclick="STOP();">STOP</button>
+                    <button class="btn-sm btn-danger" onclick="STOP();">STOP</button>
                 </fieldset>
+                </div>
 
                 <br>
                 <label for="runningTimer">Running Timer</label><br>
-                <progress id="runningTimer" max="100" value="0"></progress>
+                <progress class="progress-bar bg-success rounded" id="runningTimer" max="100" value="0"></progress>
 
                 <br><br><br><br>
 

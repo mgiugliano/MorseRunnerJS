@@ -16,6 +16,7 @@
 // Callback functions triggered when pressing ESC, F1, F2...
 document.onkeydown = function(evt) {
     evt = evt || window.event;
+    if(evt.keyCode >= 112 && evt.keyCode <= 119) evt.preventDefault(); //prevent default F1-F7 browser functions
     switch(evt.keyCode) {
         case 27: // ESC (not working on Safari)
             STATION.stop();
@@ -24,7 +25,7 @@ document.onkeydown = function(evt) {
             CQ();
             break;
         case 113: //F2
-            NR();   // name of the function and NOT of the global variable!
+            Nr();   // name of the function and NOT of the global variable!
             break;
         case 114: //F3
             TU();
@@ -38,10 +39,10 @@ document.onkeydown = function(evt) {
         case 117: //F6
             B4();
             break;
-        case 118: //F6
+        case 118: //F7
             QSTN();
             break;
-        case 119: //F7
+        case 119: //F8
             AGN();
             break;
     default:

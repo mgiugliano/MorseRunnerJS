@@ -69,8 +69,14 @@ var Noise = (function () {
 
 function buildTrack(track) {
     track.audioSource = audioContext.createBufferSource();
+    var filter = new BiquadFilterNode(audioContext, {
+        type: "bandpass",
+        frequency: PITCH,
+        Q: PITCH/BANDW,
+    })
     track.gainNode = audioContext.createGain();
-    track.audioSource.connect(track.gainNode);
+    track.audioSource.connect(filter)
+    filter.connect(track.gainNode);
     track.gainNode.connect(audioContext.destination);
     track.canFade = true; // used to prevent fadeOut firing twice
   } // end buildTrack()

@@ -268,8 +268,7 @@ function TU() {
 // Sends TU and concludes the QSO
   if (RUN == true) {
     //MSG = "TU E E"; 
-    MSG = "TU"; 
-    sendMSG(MSG);
+    MSG = "TU "; 
 
     logQSO();
 
@@ -278,7 +277,7 @@ function TU() {
       Stations.splice(IDX, 1);
     }
     focus_CALL();       // The GUI input text field "hisCALL" becomes in focus
-    sendMSG(CALL, initiateQSO);
+    sendMSG(MSG + CALL, initiateQSO);
   } 
 } // end TU()
 

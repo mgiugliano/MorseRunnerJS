@@ -61,8 +61,8 @@ document.onkeydown = function(evt) {
 // GUI elements and events when the user interacts 
 document.getElementById("CALL").addEventListener("keyup", GUI_updated);
 document.getElementById("WPM").addEventListener("keyup", GUI_updated);
-document.getElementById("PITCH").addEventListener("keyup", GUI_updated);
-document.getElementById("BANDW").addEventListener("keyup", GUI_updated);
+document.getElementById("PITCH").addEventListener("keyup", PITCH_updated);
+document.getElementById("BANDW").addEventListener("keyup", BANDW_updated);
 
 document.getElementById("QSK").addEventListener("click", readGUI);
 document.getElementById("QRN").addEventListener("click", readGUI);
@@ -89,6 +89,27 @@ function GUI_updated(event) {
         }
 } // end GUI_updated()
 //------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+function BANDW_updated(event) {
+    BANDW    = parseInt(document.getElementById("BANDW").value);
+    if (RUN == true) {
+        Noise.play(noise);
+    }
+} // end BANDW_updated()
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+function PITCH_updated(event) {
+    PITCH    = parseInt(document.getElementById("PITCH").value);
+    if (RUN == true) {
+        Noise.play(noise);
+    }
+} // end PITCH_updated()
+//------------------------------------------------------------------------------
+
 
 
 //------------------------------------------------------------------------------

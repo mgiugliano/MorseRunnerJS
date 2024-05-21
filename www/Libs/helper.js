@@ -256,7 +256,7 @@ function Nr() {
 // Sends the RST and the progressive number to the remote station
   let tmp = document.getElementById("theirCALL").value; 
   if ((RUN == true) && (tmp.length>0)) {
-    MSG = tmp + " 5NN|S250 " + cut_numbers(NR++);
+    MSG = tmp + " 5NN|S250 " + cut_numbers(NR);
     focus_NR(); 
     sendMSG(MSG, checkUserResponse);
 
@@ -268,9 +268,9 @@ function TU() {
 // Sends TU and concludes the QSO
   if (RUN == true) {
     //MSG = "TU E E"; 
-    MSG = "TU "; 
-
+    MSG = "TU ";
     logQSO();
+    NR++;
 
     if (IDX != -1) {
       agents.splice(IDX, 1);

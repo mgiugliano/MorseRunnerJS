@@ -256,7 +256,8 @@ function Nr() {
 // Sends the RST and the progressive number to the remote station
   let tmp = document.getElementById("theirCALL").value; 
   if ((RUN == true) && (tmp.length>0)) {
-    MSG = "5NN|S250 " + cut_numbers(NR); 
+    MSG = tmp + " 5NN|S250 " + cut_numbers(NR++);
+    focus_NR(); 
     sendMSG(MSG, checkUserResponse);
 
     if (DEBUG) { console.log("Nr(): ran!"); }
@@ -277,6 +278,7 @@ function TU() {
       Stations.splice(IDX, 1);
     }
     focus_CALL();       // The GUI input text field "hisCALL" becomes in focus
+    sendMSG(CALL, initiateQSO);
   } 
 } // end TU()
 
@@ -293,7 +295,7 @@ function HIS() {
   let tmp = document.getElementById("theirCALL").value; 
   if ((RUN == true) && (tmp.length>0)) {
       theirCALL = tmp;
-      sendMSG(theirCALL);
+      sendMSG(theirCALL, repeatQSO);
 
     if (DEBUG) { console.log("HIS(): ran!"); }
   }

@@ -230,3 +230,5 @@ ipython_config.py
 profile_default/
 ipython_config.py
 
+#Makefile
+Makefile

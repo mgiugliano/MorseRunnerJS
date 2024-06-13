@@ -40,7 +40,10 @@ function sendMSG() {
           onFinished = function () { }
         }
 
-        STATION.onFinished = function () { onFinished(); }
+        STATION.onFinished = function () {
+            if (QSK == false) { Noise.play(noise); }
+            onFinished();
+        }
 
         if (QSK == false) { Noise.stop(noise); }
         STATION.play();
@@ -51,8 +54,6 @@ function sendMSG() {
 
 //------------------------------------------------------------------------------
 function initiateQSO() {
-
-  if (QSK == false) { Noise.play(noise); }
 
 	for(let k = 0; k < ACTIVITY; k++) {  //  
     Stations.push(createStation());
@@ -112,8 +113,6 @@ function DE() {
 
 //------------------------------------------------------------------------------
 function repeatQSO() {
-
-  if (QSK == false) { Noise.play(noise); }
 
   playActivity();
 

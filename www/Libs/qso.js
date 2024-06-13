@@ -44,14 +44,19 @@ function playActivity() {
 function respondCall() {
     tmp = document.getElementById("theirCALL").value;
 
-    if ((RUN == true) && (event.keyCode === 13) && (tmp.length>0)) {
-        theirCALL = tmp;
-        //WRONG - theirNr  = NR.string;
-        document.getElementById("RST").value = "5NN";
-        sendMSG(theirCALL + "|S150 5NN |S150 " + cut_numbers(NR), checkUserResponse);
+    if ((RUN == true) && (event.keyCode === 13)) {
+        if (tmp.length>0) {
+            theirCALL = tmp;
+            //WRONG - theirNr  = NR.string;
+            document.getElementById("RST").value = "5NN";
+            sendMSG(theirCALL + "|S150 5NN |S150 " + cut_numbers(NR), checkUserResponse);
 
-        document.getElementById("theirNr").focus();
-        document.getElementById("theirNr").select();
+            document.getElementById("theirNr").focus();
+            document.getElementById("theirNr").select();
+	} else {
+	    clear_fields();
+	    CQ();
+	}
     }
 } // end respondCall()
 //------------------------------------------------------------------------------

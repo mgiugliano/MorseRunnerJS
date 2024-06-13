@@ -160,6 +160,12 @@ function focus_CALL() {
       document.getElementById("theirCALL").focus();
       document.getElementById("theirCALL").select();
 } // end focus_CALL()
+
+function focus_NR() {
+    // The GUI input text field "hisCALL" is focused
+          document.getElementById("theirNr").focus();
+          document.getElementById("theirNr").select();
+    } // end focus_NR()
 //------------------------------------------------------------------------------
 
 

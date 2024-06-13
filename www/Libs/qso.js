@@ -87,11 +87,12 @@ function logQSO() {
   let entry = loggeddate + "  " + copiedCallSign + "\t\t" + "599 " + NR + "\t599 " + copiedNr;
 
   if ((copiedCallSign == Stations[IDX].HisCall) && (copiedNr == Stations[IDX].HisNr)) {
-     tmp = tmp + "\n" + entry + " ✓"
-  }
-  else {
-    tmp = tmp + "\n" + entry + " ✗"
-  }
+	tmp = tmp + "\n" + entry + " ✓";
+  }else {
+  	tmp = tmp + "\n" + entry  + " ✗" + " (" + Stations[IDX].HisCall + ") " + " (" + Stations[IDX].HisNr + ")";
+	}
+
   document.getElementById("logTextArea").value = tmp;
+
 } // end logQSO()
 //------------------------------------------------------------------------------
